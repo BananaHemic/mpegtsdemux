@@ -1,0 +1,13 @@
+﻿  tsdemux.c
+c:\users\j\documents\projects\mpegtsdemux\mpegtsdemux\tsdemux.c(3159): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  pesparse.c
+c:\users\j\documents\projects\mpegtsdemux\mpegtsdemux\pesparse.c(457): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  mpegtsparse.c
+c:\users\j\documents\projects\mpegtsdemux\mpegtsdemux\mpegtsparse.c(998): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  mpegtspacketizer.c
+c:\users\j\documents\projects\mpegtsdemux\mpegtsdemux\mpegtspacketizer.c(2543): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  mpegtsbase.c
+c:\users\j\documents\projects\mpegtsdemux\mpegtsdemux\mpegtsbase.c(1856): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  gsttsdemux.c
+c:\users\j\documents\projects\mpegtsdemux\mpegtsdemux\gsttsdemux.c(49): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+  Generating Code...
