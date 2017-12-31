@@ -10,8 +10,8 @@ tsdemux.c(1353): warning C4244: '=': conversion from 'double' to 'gint', possibl
 tsdemux.c(2337): warning C4244: '=': conversion from '__int64' to 'guint', possible loss of data
      Creating library C:\Users\J\Documents\Projects\mpegtsdemux\x64\Release\mpegtsdemux.lib and object C:\Users\J\Documents\Projects\mpegtsdemux\x64\Release\mpegtsdemux.exp
   Generating code
-  8 of 240 functions ( 3.3%) were compiled, the rest were copied from previous compilation.
+  7 of 240 functions ( 2.9%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    7 functions had inline decision re-evaluated but remain unchanged
+    8 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   mpegtsdemux.vcxproj -> C:\Users\J\Documents\Projects\mpegtsdemux\x64\Release\mpegtsdemux.dll

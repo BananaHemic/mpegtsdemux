@@ -2343,6 +2343,7 @@ mpegts_packetizer_pts_to_ts (MpegTSPacketizer2 * packetizer,
   //return MPEGTIME_TO_GSTTIME(pts);
   if(res != GST_CLOCK_TIME_NONE)
 	return (pts - 60ULL * 60ULL * 1000000000ULL);
+  // James made the above change
   return res;
 }
 

@@ -2409,7 +2409,7 @@ calculate_and_push_newsegment (GstTSDemux * demux, TSDemuxStream * stream,
   GstClockTime firstts = 0;
   GList *tmp;
 
-  GST_DEBUG ("Creating new newsegment for stream %p", stream);
+  GST_WARNING ("Creating new newsegment for stream %p", stream);
 
   if (target_program == NULL)
     target_program = demux->program;
@@ -2430,15 +2430,16 @@ calculate_and_push_newsegment (GstTSDemux * demux, TSDemuxStream * stream,
   }
   if (GST_CLOCK_TIME_IS_VALID (lowest_pts))
     firstts = lowest_pts;
-  GST_DEBUG ("lowest_pts %" G_GUINT64_FORMAT " => clocktime %" GST_TIME_FORMAT,
+  GST_WARNING ("lowest_pts %" G_GUINT64_FORMAT " => clocktime %" GST_TIME_FORMAT,
       lowest_pts, GST_TIME_ARGS (firstts));
 
   if (demux->segment.format != GST_FORMAT_TIME || demux->reset_segment) {
     /* It will happen only if it's first program or after flushes. */
     GST_DEBUG ("Calculating actual segment");
-    if (base->segment.format == GST_FORMAT_TIME) {
+    if (base->segment.format == GST_FORMAT_TIME && FALSE) {
       /* Try to recover segment info from base if it's in TIME format */
       demux->segment = base->segment;
+	  GST_WARNING("a");
     } else {
       /* Start from the first ts/pts */
       GstClockTime base =
@@ -2450,6 +2451,7 @@ calculate_and_push_newsegment (GstTSDemux * demux, TSDemuxStream * stream,
       demux->segment.time = firstts;
       demux->segment.rate = demux->rate;
       demux->segment.base = base;
+	  GST_WARNING("b");
     }
   } else if (demux->segment.start < firstts) {
     /* Take into account the offset to the first buffer timestamp */
@@ -2459,12 +2461,15 @@ calculate_and_push_newsegment (GstTSDemux * demux, TSDemuxStream * stream,
       if (GST_CLOCK_TIME_IS_VALID (demux->segment.stop))
         demux->segment.stop += firstts - demux->segment.start;
       demux->segment.position = firstts;
+	  GST_WARNING("c");
     }
   }
 
   if (!demux->segment_event) {
     demux->segment_event = gst_event_new_segment (&demux->segment);
     GST_EVENT_SEQNUM (demux->segment_event) = base->last_seek_seqnum;
+	  GST_WARNING ("Making segment event with start %" GST_TIME_FORMAT " position %" GST_TIME_FORMAT " time %" GST_TIME_FORMAT,
+		  GST_TIME_ARGS(demux->segment.start), GST_TIME_ARGS (demux->segment.position), GST_TIME_ARGS(demux->segment.time));
   }
 
 push_new_segment:
@@ -2474,7 +2479,7 @@ push_new_segment:
       continue;
 
     if (demux->segment_event) {
-      GST_DEBUG_OBJECT (stream->pad, "Pushing newsegment event");
+      GST_WARNING_OBJECT (stream->pad, "Pushing newsegment event");
       gst_event_ref (demux->segment_event);
       gst_pad_push_event (stream->pad, demux->segment_event);
     }
