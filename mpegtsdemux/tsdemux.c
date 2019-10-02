@@ -2646,7 +2646,9 @@ parse_opus_access_unit (TSDemuxStream * stream)
 
 error:
   {
-    GST_ERROR ("Failed to parse Opus access unit");
+    GST_ERROR ("Failed to parse Opus access unit! size=%i", stream->current_size);
+
+    //GST_WARNING ("Failed to parse Opus access unit");
     g_free (stream->data);
     stream->data = NULL;
     stream->current_size = 0;
@@ -2890,7 +2892,9 @@ gst_ts_demux_push_pending_data (GstTSDemux * demux, TSDemuxStream * stream,
         bs->registration_id == DRF_ID_OPUS) {
       buffer_list = parse_opus_access_unit (stream);
       if (!buffer_list) {
-        res = GST_FLOW_ERROR;
+          GST_WARNING_OBJECT (demux, "Surviving opus parse error");
+          //return;
+        //res = GST_FLOW_ERROR;
         goto beach;
       }
 
